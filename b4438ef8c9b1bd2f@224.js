@@ -26,17 +26,19 @@ function _chart(d3,data,width,height,drag,invalidation)
   links.push(newLink);
   
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(0).strength(1))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(30).strength(1))
       .force("charge", d3.forceManyBody().strength(-50))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
+      
+      
 
   const svg = d3.create("svg")
       .attr("viewBox", [-width / 2, -height / 2, width, height]);
 
   let link = svg.append("g")
       .attr("stroke", "#999")
-      .attr("stroke-opacity", 0.6)
+      .attr("stroke-opacity", 2)
     .selectAll("line")
     .data(links)
     .join("line");
@@ -44,13 +46,13 @@ function _chart(d3,data,width,height,drag,invalidation)
   let node = svg.append("g")
       .attr("fill", "#ff0")
       .attr("stroke", "#000")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2)
     .selectAll("circle")
     .data(nodes)
     .join("circle")
     .attr("fill", d => d === newNodeHierarchy ? "#f00" : (d.children ? null : "#000"))
       .attr("stroke", d => d.children ? null : "#00f")
-      .attr("r", 3.5)
+      .attr("r", 5)
       .call(drag(simulation));
 
   node.append("title")
@@ -69,7 +71,7 @@ function _chart(d3,data,width,height,drag,invalidation)
   });
 
   // Find the node to delete, 'a' node
-  const nodeToDelete = nodes[4];
+  const nodeToDelete = nodes[5];
 
   // Filter out node and associated links
   nodes = nodes.filter((node) => node !== nodeToDelete);
@@ -87,6 +89,8 @@ function _chart(d3,data,width,height,drag,invalidation)
 
   // Deleted old node 'a'
   console.log(nodes);       
+
+  
   return svg.node();
 }
 
