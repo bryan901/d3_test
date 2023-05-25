@@ -56,7 +56,7 @@ function _chart(d3,data,width,height,drag,invalidation)
       .call(drag(simulation));
 
     // Add text labels to nodes
-    let labels = svg
+  let labels = svg
     .append("g")
     .attr("font-family", "sans-serif")
     .attr("font-size", 10)
