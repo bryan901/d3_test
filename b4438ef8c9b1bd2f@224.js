@@ -26,11 +26,10 @@ function _1(md){return(
     links.push(newLink);
     
     const simulation = d3.forceSimulation(nodes)
-        .force("link", d3.forceLink(links).id(d => d.id).distance(35).strength(1))
-        .force("charge", d3.forceManyBody().strength(-50))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(80).strength(1))
+        .force("charge", d3.forceManyBody().strength(-300))
         .force("x", d3.forceX())
         .force("y", d3.forceY());
-        
         
   
     const svg = d3.create("svg")
