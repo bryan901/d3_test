@@ -4,33 +4,33 @@
     {
       "name": "Appendectomy",
       "children": [
-        { "name": "a" },
-        { "name": "b" },
-        { "name": "c" }
+        { "name": "" },
+        { "name": "" },
+        { "name": "" }
       ]
     },
     {
       "name": "Gastrectomy",
       "children": [
-        { "name": "d" },
-        { "name": "e" },
-        { "name": "f" }
+        { "name": "" },
+        { "name": "" },
+        { "name": "" }
       ]
     },
     {
       "name": "Cholecystectomy",
       "children": [
-        { "name": "g" },
-        { "name": "h" },
-        { "name": "i" }
+        { "name": "" },
+        { "name": "" },
+        { "name": "" }
       ]
     },
     {
       "name": "Hernia",
       "children": [
-        { "name": "j" },
-        { "name": "k" },
-        { "name": "l" }
+        { "name": "" },
+        { "name": "" },
+        { "name": "" }
       ]
     }
   ]

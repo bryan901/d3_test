@@ -26,7 +26,7 @@ function _chart(d3,data,width,height,drag,invalidation)
   links.push(newLink);
   
   const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(30).strength(1))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(33).strength(1))
       .force("charge", d3.forceManyBody().strength(-50))
       .force("x", d3.forceX())
       .force("y", d3.forceY());
@@ -55,6 +55,19 @@ function _chart(d3,data,width,height,drag,invalidation)
       .attr("r", 5)
       .call(drag(simulation));
 
+    // Add text labels to nodes
+    let labels = svg
+    .append("g")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", 10)
+    .attr("fill", "black")
+    .selectAll("text")
+    .data(nodes.filter(node => node.name !== "a"))
+    .join("text")
+    .text(d => d.data.name)
+    .attr("dx", 0)
+    .attr("dy", 2);
+
   node.append("title")
       .text(d => d.data.name);
 
@@ -68,6 +81,8 @@ function _chart(d3,data,width,height,drag,invalidation)
     node
         .attr("cx", d => d.x)
         .attr("cy", d => d.y);
+    // Update text label positions
+    labels.attr("x", d => d.x + 10).attr("y", d => d.y + 4);
   });
 
   // Find the node to delete, 'a' node
@@ -88,7 +103,7 @@ function _chart(d3,data,width,height,drag,invalidation)
   simulation.nodes(nodes).force("link").links(links);
 
   // Deleted old node 'a'
-  console.log(nodes);       
+  console.log(nodeToDelete);       
 
   
   return svg.node();
