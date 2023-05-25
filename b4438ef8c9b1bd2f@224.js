@@ -82,7 +82,7 @@ function _chart(d3,data,width,height,drag,invalidation)
         .attr("cx", d => d.x)
         .attr("cy", d => d.y);
     // Update text label positions
-    labels.attr("x", d => d.x + 10).attr("y", d => d.y + 4);
+    labels.attr("x", d => d.x + 8).attr("y", d => d.y + 4);
   });
 
   // Find the node to delete, 'a' node
